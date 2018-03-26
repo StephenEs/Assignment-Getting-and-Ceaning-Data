@@ -88,7 +88,7 @@ data_combined_sel$activity <- factor(data_combined_sel$activity, labels = act_la
 
 #########################################################
 ##    Uses descriptive activity names to name the      ##
-##           activities in the data set                ##
+##           features in the data set                  ##
 ##                  (Step 4)                           ##
 #########################################################
 
@@ -105,7 +105,7 @@ names(data_combined_sel)<-gsub("BodyBody", "Body", names(data_combined_sel))
 ##                  (Step 5)                           ##
 #########################################################
 
-final_data <- aggregate(. ~subject + activity, data_combined_sel, mean)
-final_data <- final_data[order(final_data$subject,final_data$activity),]
-write.table(final_data, file = file.path(rootfolder_path,"tidydata.txt"),row.name=FALSE, sep = ',')
+tidydata <- aggregate(. ~subject + activity, data_combined_sel, mean)
+tidydata <- tidydata[order(tidydata$subject,tidydata$activity),]
+write.table(tidydata, file = file.path(rootfolder_path,"tidydata.txt"),row.name=FALSE, sep = ',')
 
